@@ -7,6 +7,7 @@ import { todolistsReducer } from '../../store/reducers/reducers/todoListsReducer
 import { v1 } from 'uuid'
 import { TaskPriorities, TasksStatuses } from '../../api'
 import { authReducer } from '../../store/reducers/reducers/authReducer'
+import { HashRouter } from 'react-router-dom'
 
 const rootReducer = combineReducers({
   app: appReducer,
@@ -89,4 +90,8 @@ export type StateType = ReturnType<typeof rootReducer>
 
 export const reduxStoreProviderDecorator = (storyFn: any) => {
   return <Provider store={storybookStore}>{storyFn()}</Provider>
+}
+
+export const browserRouterDecorator = (storyFn: any) => {
+  return <HashRouter>{storyFn()}</HashRouter>
 }
